@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596843797298",
+    "firebase_url": "https://startfit-8ae61-default-rtdb.firebaseio.com",
+    "project_id": "startfit-8ae61",
+    "storage_bucket": "startfit-8ae61.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596843797298:android:1e0e69adf109ad173c552b",
+        "android_client_info": {
+          "package_name": "com.finaltest.startfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596843797298-61v2vuhbarj4u9bckuus0v6ej4bmo62o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR_txw4G6f7lSNNIZ6nb92HzwAbqMlKLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596843797298-61v2vuhbarj4u9bckuus0v6ej4bmo62o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
