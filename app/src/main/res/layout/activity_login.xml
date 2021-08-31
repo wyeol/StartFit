@@ -41,12 +41,12 @@
         android:text="회원가입"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_login2"
+        app:layout_constraintStart_toEndOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/et_pwd"
         app:layout_constraintVertical_bias="0.987" />
 
     <Button
-        android:id="@+id/btn_login2"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="로그인"

@@ -35,6 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         mEtEmail = findViewById(R.id.et_email);
         mEtPwd = findViewById(R.id.et_pwd);
+        mBtnRegister = findViewById(R.id.btn_register);
+
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
