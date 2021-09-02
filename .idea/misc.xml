@@ -3,17 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/jww06/AndroidStudioProjects/StartFit/app/src/main/res/drawable/sficon_background.xml" value="0.35833333333333334" />
+        <entry key="..\:/StartFit/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.3255208333333333" />
+        <entry key="..\:/StartFit/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.3255208333333333" />
+        <entry key="..\:/StartFit/app/src/main/res/drawable/ic_baseline_monetization_on_24.xml" value="0.3255208333333333" />
+        <entry key="..\:/StartFit/app/src/main/res/drawable/ic_baseline_people_alt_24.xml" value="0.3255208333333333" />
         <entry key="..\:/StartFit/app/src/main/res/layout/activity_loding.xml" value="0.17300724637681159" />
         <entry key="..\:/StartFit/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/StartFit/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/StartFit/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/StartFit/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/StartFit/app/src/main/res/menu/bottom_menu.xml" value="0.30052083333333335" />
         <entry key="..\:/StartFit/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3255208333333333" />
         <entry key="..\:/StartFit/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3255208333333333" />
         <entry key="..\:/Users/jww06/AndroidStudioProjects/StartFit/app/src/main/res/layout/activity_login.xml" value="0.3338541666666667" />
         <entry key="..\:/Users/jww06/AndroidStudioProjects/StartFit/app/src/main/res/layout/activity_main.xml" value="0.315625" />
         <entry key="..\:/Users/jww06/AndroidStudioProjects/StartFit/app/src/main/res/layout/activity_register.xml" value="0.25" />
-        <entry key="..\:/Users/jww06/AndroidStudioProjects/StartFit/app/src/main/res/mipmap-anydpi-v26/sficon.xml" value="0.35833333333333334" />
       </map>
     </option>
   </component>
