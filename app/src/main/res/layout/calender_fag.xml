@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="351dp"
+        android:layout_height="332dp"
         android:text="캘린더 화면"
-        android:textSize="40sp"/>
+        android:textSize="400sp" />
 
 
 </LinearLayout>
