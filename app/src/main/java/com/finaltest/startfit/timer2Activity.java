@@ -15,6 +15,7 @@ public class timer2Activity extends AppCompatActivity {
     TextView textView;
     TimerTask timerTask;
     Timer timer = new Timer();
+    int count;
 
 
     @Override
@@ -31,7 +32,6 @@ public class timer2Activity extends AppCompatActivity {
         timer.cancel();
         super.onDestroy();
     }
-
     public void clickHandler(View view)
     {
         switch(view.getId())
@@ -42,7 +42,36 @@ public class timer2Activity extends AppCompatActivity {
             case R.id.btnReset :
                 stopTimerTask();
                 break;
+            case R.id.plus60 :
+                addmin();
+                break;
+            case R.id.minus60 :
+                minusmin();
+                break;
+            case R.id.plus30 :
+                addsec();
+                break;
+            case R.id.minus30 :
+                minussec();
+                break;
+
         }
+    }
+    private void addmin(){
+        count += 60;
+        textView.setText(count+"초");
+    }
+    private void addsec(){
+        count += 30;
+        textView.setText(count+"초");
+    }
+    private void minusmin(){
+        count -= 60;
+        textView.setText(count+"초");
+    }
+    private void minussec(){
+        count -= 30;
+        textView.setText(count+"초");
     }
 
     private void startTimerTask()
@@ -51,7 +80,7 @@ public class timer2Activity extends AppCompatActivity {
 
         timerTask = new TimerTask()
         {
-            int count = 120;
+
 
             @Override
             public void run()
@@ -75,6 +104,7 @@ public class timer2Activity extends AppCompatActivity {
             textView.setText("");
             timerTask.cancel();
             timerTask = null;
+            count=0;
         }
     }
 }
