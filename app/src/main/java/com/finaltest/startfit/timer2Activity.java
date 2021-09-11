@@ -21,7 +21,7 @@ public class timer2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_timer2);
 
         textView = findViewById(R.id.textView2);
     }
