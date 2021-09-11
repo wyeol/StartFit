@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartFit">
 
-        <activity android:name=".timer2Activity">
+        <activity android:name=".LodingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
