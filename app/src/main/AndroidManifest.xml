@@ -9,17 +9,23 @@
         android:roundIcon="@mipmap/sficon"
         android:supportsRtl="true"
         android:theme="@style/Theme.StartFit">
-        <activity android:name=".timer2Activity"></activity>
-        <activity android:name=".timerActivity">
+        <activity android:name=".timer2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".timerActivity">
+
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"></activity>
+
+
+
     </application>
 
 </manifest>

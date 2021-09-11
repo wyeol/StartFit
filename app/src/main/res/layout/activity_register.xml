@@ -15,10 +15,12 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:hint="이메일"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/fontfont"/>
 
     <EditText
         android:id="@+id/et_pwd"
@@ -29,6 +31,8 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:hint="비밀번호"
+        android:textSize="20dp"
+        android:fontFamily="@font/fontfont"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,13 +40,16 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="가입완료"
+        android:layout_width="204dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button_background"
+        android:text="가입하기"
+        android:textSize="30dp"
+        android:fontFamily="@font/fontfont"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pwd"
-        app:layout_constraintVertical_bias="0.984" />
+        app:layout_constraintVertical_bias="0.862" />
 </androidx.constraintlayout.widget.ConstraintLayout>

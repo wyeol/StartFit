@@ -51,7 +51,10 @@
                 android:onClick="clickHandler"
                 android:text="Start"
                 android:fontFamily="@font/fontfont"
+                android:background="@drawable/button_background"
+                android:textColor="#ffffff"
                 android:textSize="20dp"
+
                 />
 
             <Button
@@ -61,7 +64,10 @@
                 android:layout_weight="1"
                 android:onClick="clickHandler"
                 android:text="Reset"
+                android:background="@drawable/button_background"
+                android:textColor="#ffffff"
                 android:textSize="20dp"
+
                 android:fontFamily="@font/fontfont"/>
         </LinearLayout><LinearLayout
         android:layout_width="match_parent"
