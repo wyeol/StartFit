@@ -10,5 +10,11 @@
         android:text="캘린더 화면"
         android:textSize="400sp" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="435dp"
+        android:layout_height="58dp"
+        android:text="Button" />
+
 
 </LinearLayout>

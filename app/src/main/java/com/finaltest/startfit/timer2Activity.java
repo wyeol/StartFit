@@ -2,7 +2,9 @@ package com.finaltest.startfit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
 
@@ -86,6 +88,14 @@ public class timer2Activity extends AppCompatActivity {
             public void run()
             {
                 count--;
+                if(count==0){
+                    Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                    vibrator.vibrate(500);
+                    textView.setText("");
+                    timerTask.cancel();
+                    timerTask = null;
+                    count=0;
+                }
                 textView.post(new Runnable() {
                     @Override
                     public void run() {

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.finaltest.startfit">
+    <uses-permission android:name = "android.permission.VIBRATE"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -9,16 +12,18 @@
         android:roundIcon="@mipmap/sficon"
         android:supportsRtl="true"
         android:theme="@style/Theme.StartFit">
+
         <activity android:name=".timer2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity android:name=".exercise_upper_body"/>
         <activity android:name=".VideoView"/>
     </application>
