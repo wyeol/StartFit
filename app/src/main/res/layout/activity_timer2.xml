@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".timer2Activity">
+    tools:context=".timer2Activity"
+    android:background="@drawable/main_background">
 
     <TextView
         android:id="@+id/TimerTitle"
@@ -15,8 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textSize="30sp" />
-
+        tools:textSize="30sp"
+        android:fontFamily="@font/fontfont"/>
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -25,7 +26,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/fontfont">
 
         <TextView
             android:id="@+id/textView2"
@@ -38,7 +40,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <Button
                 android:id="@+id/btnStart"
@@ -46,7 +49,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clickHandler"
-                android:text="Start" />
+                android:text="Start"
+                android:fontFamily="@font/fontfont"
+                android:textSize="20dp"
+                />
 
             <Button
                 android:id="@+id/btnReset"
@@ -54,7 +60,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clickHandler"
-                android:text="Reset" />
+                android:text="Reset"
+                android:textSize="20dp"
+                android:fontFamily="@font/fontfont"/>
         </LinearLayout><LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="clickHandler"
-            android:text="1분 추가" />
+            android:text="1분 추가"
+            android:textSize="20dp"
+            android:fontFamily="@font/fontfont"/>
 
         <Button
             android:id="@+id/minus60"
@@ -74,7 +84,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="clickHandler"
-            android:text="1분 빼기" />
+            android:text="1분 빼기"
+            android:textSize="20dp"
+            android:fontFamily="@font/fontfont"/>
     </LinearLayout>
 
         <LinearLayout
@@ -88,7 +100,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clickHandler"
-                android:text="30초 추가" />
+                android:text="30초 추가"
+                android:textSize="20dp"
+
+                android:fontFamily="@font/fontfont"/>
 
             <Button
                 android:id="@+id/minus30"
@@ -96,7 +111,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="clickHandler"
-                android:text="30초 빼기" />
+                android:text="30초 빼기"
+                android:textSize="20dp"
+                android:fontFamily="@font/fontfont"/>
         </LinearLayout>
 
         <ImageView
