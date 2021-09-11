@@ -3,6 +3,9 @@ package com.finaltest.startfit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -75,7 +78,7 @@ public class timer2Activity extends AppCompatActivity {
         count -= 30;
         textView.setText(count+"초");
     }
-
+    Ringtone rt;
     private void startTimerTask()
     {
         stopTimerTask();
@@ -94,6 +97,10 @@ public class timer2Activity extends AppCompatActivity {
                     textView.setText("");
                     timerTask.cancel();
                     timerTask = null;
+
+                    Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+                    rt = RingtoneManager.getRingtone(getApplicationContext(),notification);
+                    rt.play();
                     count=0;
                 }
                 textView.post(new Runnable() {
@@ -115,6 +122,7 @@ public class timer2Activity extends AppCompatActivity {
             timerTask.cancel();
             timerTask = null;
             count=0;
+            rt.stop();
         }
     }
 }
