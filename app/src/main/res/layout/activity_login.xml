@@ -55,12 +55,12 @@
         android:text="STARTFIT"
         android:textColor="#000000"
         android:textSize="50dp"
+        android:fontFamily="@font/fontfont"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039"
-        android:fontFamily="@font/fontfont"/>
+        app:layout_constraintVertical_bias="0.039" />
 
     <LinearLayout
         android:layout_width="299dp"
@@ -86,15 +86,22 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="15dp"
                 android:text="Emill-ID"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/fontfont"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/et_email"
                 android:layout_width="221dp"
                 android:layout_height="61dp"
                 android:ems="10"
-                android:hint="이메일을 입력하세요"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="@font/fontfont"
+                android:hint="이메일을 입력하세요"
                 android:inputType="textEmailAddress"
                 android:text=""
 
@@ -114,6 +121,11 @@
                 android:layout_height="wrap_content"
                 android:text="PASSWORD"
                 android:fontFamily="@font/fontfont"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
             <EditText
                 android:id="@+id/et_pwd"

@@ -26,7 +26,7 @@ public class exercise_upper_body extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), sItem, Toast.LENGTH_SHORT).show(); //해당 항목의 텍스트를 띄워줍니다.
                 if(position == 0) { // 푸쉬업 운동 리스트를 선택한 경우
                     Intent intent = new Intent(getApplicationContext(), VideoView.class);
-                    intent.putExtra("영상", "kTJczUoc26U");
+                    intent.putExtra("영상", "0DsXTSHo3lU");
                     startActivity(intent);
                 } else if(position == 1) { // 풀업 운동 리스트를 선택한 경우
                     Intent intent = new Intent(getApplicationContext(), VideoView.class);

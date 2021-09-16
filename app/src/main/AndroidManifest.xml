@@ -13,17 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartFit">
 
-        <activity android:name=".LodingActivity">
+        <activity android:name=".timer2Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
 
-        </activity>
+
+        <activity android:name=".RegisterActivity"/>
         <activity android:name=".exercise_upper_body"/>
         <activity android:name=".VideoView"/>
     </application>

@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.1'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.android.support:design:30.0.0'
-    implementation files('C:\\Users\\jww06\\AndroidStudioProjects\\StartFit\\app\\libs\\YouTubeAndroidPlayerApi.jar')
+    implementation files('C:\\StartFit\\app\\libs\\YouTubeAndroidPlayerApi.jar')
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
