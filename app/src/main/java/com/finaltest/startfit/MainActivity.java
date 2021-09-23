@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -32,22 +33,11 @@ public class MainActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
 
-/*            mFirebaseAuth = FirebaseAuth.getInstance();
 
-            Button btn_logout = findViewById(R.id.btn_logout);
-            btn_logout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mFirebaseAuth.signOut();
-                    Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-                    startActivity(intent);
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+            startSignUpActivity();
+        }
 
-                    finish();
-                }
-            });
-        //mFirebaseAuth.getCurrentUser().delete()
-
- */
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -112,4 +102,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
+
+
+   private void startSignUpActivity(){
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivity(intent);
+   }
 }

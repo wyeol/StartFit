@@ -4,59 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login.RegisterActivity">
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:fontFamily="@font/fontfont"
-        android:text="STARTFIT"
-        android:textColor="#000000"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+    tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/et_email"
+        android:id="@+id/emailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
         android:ems="10"
         android:fontFamily="@font/fontfont"
         android:hint="이메일"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.099" />
 
     <EditText
-        android:id="@+id/et_pwd"
+        android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:ems="10"
         android:fontFamily="@font/fontfont"
         android:hint="비밀번호"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <EditText
+        android:id="@+id/passwordCheckEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/fontfont"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.11" />
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/registerbutton"
         android:layout_width="204dp"
         android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/fontfont"
         android:text="가입하기"
@@ -66,6 +72,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_pwd"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCheckEditText"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

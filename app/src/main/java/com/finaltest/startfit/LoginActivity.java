@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -14,13 +13,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
-    private DatabaseReference mDatebaseRef; //실시간 데이터 베이스
-    private EditText mEtEmail, mEtPwd; //로그인 입력필드
+
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -28,42 +25,70 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mDatebaseRef = FirebaseDatabase.getInstance().getReference("startfit");
+        mAuth = FirebaseAuth.getInstance();
 
-        mEtEmail = findViewById(R.id.et_email);
-        mEtPwd = findViewById(R.id.et_pwd);
+        findViewById(R.id.loginbutton).setOnClickListener(onClickListener);
+        findViewById(R.id.signupbutton).setOnClickListener(onClickListener);
+        findViewById(R.id.gotoPasswordResetButton).setOnClickListener(onClickListener);
+    }
 
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.loginbutton:
+                    login();
+                    break;
+                case R.id.gotoPasswordResetButton:
+                    myStartActivity(passwordresetActivity.class);
+                    break;
+                case R.id.signupbutton:
+                    myStartActivity(RegisterActivity.class);
+                    break;
+            }
+        }
+    };
 
-        Button btn_login = findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String strEmail = mEtEmail.getText().toString();
-                String strPwd = mEtPwd.getText().toString();
+    private void login() {
+        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString();
+        String password = ((EditText) findViewById(R.id.passwordEditText)).getText().toString();
 
-                mFirebaseAuth.signInWithEmailAndPassword(strEmail,strPwd).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            Toast.makeText(LoginActivity.this,"로그인 실패",Toast.LENGTH_SHORT).show();
+        if (email.length() > 0 && password.length() > 0) {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                Toast.makeText(LoginActivity.this, "로그인에 성공하셨습니다", Toast.LENGTH_LONG).show();
+                                myStartActivity(MainActivity.class);
+                            } else {
+                                if (task.getException() != null) {
+                                    Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_LONG).show();
+
+                                }
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+        } else {
+            Toast.makeText(LoginActivity.this, "이메일 또는 비밀번호를 입력해 주세요.", Toast.LENGTH_LONG).show();
+        }
+    }
 
-        Button btn_register = findViewById(R.id.btn_register);
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
+    }
+
+    private void myStartActivity(Class c) {
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
+
+
