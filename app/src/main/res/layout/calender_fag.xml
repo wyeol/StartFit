@@ -16,5 +16,13 @@
         android:layout_height="58dp"
         android:text="Button" />
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"
+        android:text="로그아웃"
+        android:visibility="gone"/>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.finaltest.startfit.calender.calenderfag;
+import com.finaltest.startfit.login.RegisterActivity;
 import com.finaltest.startfit.video.videofag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
 
    private void startSignUpActivity(){
-        Intent intent = new Intent(this,RegisterActivity.class);
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
    }
 }

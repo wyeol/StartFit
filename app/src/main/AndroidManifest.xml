@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".passwordresetActivity"/>
+        <activity android:name=".login.RegisterActivity"/>
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".login.passwordresetActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

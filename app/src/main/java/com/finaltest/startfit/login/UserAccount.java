@@ -1,4 +1,4 @@
-package com.finaltest.startfit;
+package com.finaltest.startfit.login;
 
 public class UserAccount {
     private String emailId;
