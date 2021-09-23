@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".video.exercise_video.exercise_upper_body">
+    tools:context=".video.exercise_video.exercise_lower_body">
 
     <TextView
         android:id="@+id/Stretchmain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fontfont"
-        android:text="상체운동"
+        android:text="하체운동"
         android:textColor="#000000"
         android:textSize="50dp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fontfont"
         android:gravity="center_horizontal"
-        android:text="효과적인 상체운동 모음.ZIP"
+        android:text="효과적인 하체운동 모음.ZIP"
         android:textColor="#727272"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +42,7 @@
         android:layout_width="336dp"
         android:layout_height="311dp"
         android:layout_weight="1"
-        android:entries="@array/upperbody_exercise_url"
+        android:entries="@array/lowerbody_exercise_url"
         android:fastScrollAlwaysVisible="true"
         android:fastScrollEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -120,7 +120,7 @@
             <ImageView
                 android:id="@+id/full_body"
                 android:layout_width="183dp"
-                android:layout_height="107dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="5dp"
                 android:scaleType="fitXY"

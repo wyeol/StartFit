@@ -1,13 +1,10 @@
-package com.finaltest.startfit;
+package com.finaltest.startfit.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.finaltest.startfit.databinding.ActivityKakaologinBinding;
@@ -15,7 +12,6 @@ import com.kakao.sdk.auth.LoginClient;
 import com.kakao.sdk.auth.model.OAuthToken;
 import com.kakao.sdk.user.UserApiClient;
 import com.kakao.sdk.user.model.User;
-import com.finaltest.startfit.databinding.ActivityMainBinding;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;

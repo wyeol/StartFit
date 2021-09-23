@@ -2,14 +2,43 @@
     <string name="app_name">StartFit</string>
 
     <string-array name="upperbody_exercise_url">
-        <item>벤치 프레스</item>
-        <item>데드리프트</item>
-        <item>바벨 로우</item>
-        <item>밀리터리 프레스</item>
-        <item>사이드 레터럴 레이즈</item>
-        <item>랫풀 다운</item>
-        <item>업라이트 로우</item>
-        <item>덤벨컬</item>
+        <item>★상체 운동전 필수 스트레칭★</item>
+        <item>[가슴]벤치 프레스</item>
+        <item>[가슴]체스트 프레스</item>
+        <item>[등]데드리프트</item>
+        <item>[등]랫풀 다운</item>
+        <item>[등]바벨 로우</item>
+        <item>[어깨]밀리터리 프레스</item>
+        <item>[어깨]사이드 레터럴 레이즈</item>
+        <item>[팔]덤벨 컬</item>
+    </string-array>
+
+    <string-array name="lowerbody_exercise_url">
+        <item>★하체 운동전 필수 스트레칭★</item>
+        <item>[허벅지]바벨 스쿼트</item>
+        <item>[종아리]레그 프레스</item>
+        <item>[하체]런지</item>
+        <item>[하체+코어]브릿지</item>
+        <item>[하체 후면]레그 컬</item>
+    </string-array>
+
+    <string-array name="fullbody_exercise_url">
+        <item>★맨몸 운동전 필수 스트레칭★</item>
+        <item>[가슴]푸쉬 업</item>
+        <item>[가슴]딥스</item>
+        <item>[등]풀 업</item>
+        <item>[팔]친 업</item>
+        <item>[복부]크런치</item>
+        <item>[복부]플랭크</item>
+        <item>[하체]맨몸 스쿼트</item>
+        <item>[하체]카프레이즈</item>
+    </string-array>
+
+    <string-array name="running_exercise_url">
+        <item>★러닝전 필수 스트레칭★</item>
+        <item>러닝 기초 영상</item>
+        <item>러닝 효과</item>
+        <item>러닝 호흡</item>
     </string-array>
 
 </resources>

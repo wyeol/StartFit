@@ -2,16 +2,14 @@ package com.finaltest.startfit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
+import com.finaltest.startfit.calender.calenderfag;
+import com.finaltest.startfit.video.videofag;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fm;
     private FragmentTransaction ft;
 
-    private calenderfag calenderfag;
-    private videofag videofag;
+    private com.finaltest.startfit.calender.calenderfag calenderfag;
+    private com.finaltest.startfit.video.videofag videofag;
     private boardfag boardfag;
     private tradefag tradefag;
     private mypagefag mypagefag;

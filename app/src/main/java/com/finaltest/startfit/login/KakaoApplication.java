@@ -1,4 +1,4 @@
-package com.finaltest.startfit;
+package com.finaltest.startfit.login;
 
 import android.app.Application;
 

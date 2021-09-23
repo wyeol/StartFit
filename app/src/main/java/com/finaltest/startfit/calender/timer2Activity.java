@@ -1,4 +1,4 @@
-package com.finaltest.startfit;
+package com.finaltest.startfit.calender;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.finaltest.startfit.R;
 
 import org.w3c.dom.Text;
 

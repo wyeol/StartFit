@@ -1,4 +1,4 @@
-package com.finaltest.startfit;
+package com.finaltest.startfit.calender;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 import android.os.Bundle;
+
+import com.finaltest.startfit.R;
 
 public class timerActivity extends AppCompatActivity {
     LinearLayout timeCountSettingLV, timeCountLV;
