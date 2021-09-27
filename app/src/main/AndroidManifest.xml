@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.finaltest.startfit">
-    <uses-permission android:name = "android.permission.VIBRATE"/>
 
 
 
@@ -13,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StartFit">
 
-        <activity android:name=".LodingActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,11 +21,22 @@
         <activity android:name=".login.RegisterActivity"/>
         <activity android:name=".login.LoginActivity"/>
         <activity android:name=".login.passwordresetActivity"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+        <activity android:name=".calender.timer2Activity" />
 
-        </activity>
+
+
+
+        <!--운동 관련 activity 파일-->
+        <activity android:name=".video.VideoView"/>
+        <activity android:name=".video.exercise_video.exercise_upper_body"/>
+        <activity android:name=".video.exercise_video.exercise_lower_body"/>
+        <activity android:name=".video.exercise_video.exercise_full_body"/>
+        <activity android:name=".video.exercise_video.exercise_running"/>
+        <!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="true">-->
+
+<!--        </activity>-->
 
     </application>
 
