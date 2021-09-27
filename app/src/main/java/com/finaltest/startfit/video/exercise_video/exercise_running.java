@@ -20,7 +20,7 @@ public class exercise_running extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_running);
 
-        ListView listView = findViewById(R.id.exercise_list);
+        ListView listView = findViewById(R.id.exercise_choice_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

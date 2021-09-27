@@ -3,7 +3,6 @@ package com.finaltest.startfit.video.exercise_video;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,7 +20,7 @@ public class exercise_upper_body extends AppCompatActivity {
         super.onCreate(savedInstanceState); //상위 클래스의 onCreate를 호출하여 오버라이드된 메소드를 처리합니다.
         setContentView(R.layout.activity_exercise_upper_body); //전체 레이아웃 인플레이션을 수행합니다.
 
-        ListView listView = findViewById(R.id.exercise_list);
+        ListView listView = findViewById(R.id.exercise_choice_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {

@@ -122,6 +122,7 @@
         android:background="@drawable/button_background"
         android:fontFamily="@font/fontfont"
         android:text="운동추가"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
