@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                 myStartActivity(MainActivity.class);
                             } else {
                                 if (task.getException() != null) {
-                                    Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "회원 정보가 없습니다", Toast.LENGTH_LONG).show();
 
                                 }
                             }
@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(1);
+        finish();
     }
 
     private void myStartActivity(Class c) {

@@ -3,12 +3,14 @@ package com.finaltest.startfit.login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.finaltest.startfit.MainActivity;
 import com.finaltest.startfit.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,9 +61,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(RegisterActivity.this,"회원가입에 성공하셨습니다",Toast.LENGTH_LONG).show();
+                                    myStartActivity(LoginActivity.class);
                                 } else {
                                     if(task.getException() != null){
-                                        Toast.makeText(RegisterActivity.this,task.getException().toString(),Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterActivity.this,"조건이 부족합니다",Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }

@@ -11,7 +11,7 @@
         android:icon="@drawable/ic_baseline_ondemand_video_24"
         android:title="영상"/>
     <item
-        android:id="@+id/action_bulletinboard"
+        android:id="@+id/home"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_format_list_bulleted_24"
         android:title="게시판"/>

@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteX="8dp" />
 
     <FrameLayout
-        android:id="@+id/main_frame"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="682dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavi"

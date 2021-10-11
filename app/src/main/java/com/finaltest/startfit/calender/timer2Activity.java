@@ -95,7 +95,7 @@ public class timer2Activity extends AppCompatActivity {
         textView.setText(count+"초");
     }
     private void addsec(){ // 타이머 30초 추가 처리 메소드
-        count += 3;
+        count += 30;
         textView.setText(count+"초");
     }
     private void minusmin(){ // 타이머 60초 감소 처리 메소드
