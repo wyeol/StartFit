@@ -92,19 +92,19 @@ public class timer2Activity extends AppCompatActivity {
     }
     private void addmin(){ // 타이머 60초 추가 처리 메소드
         count += 60;
-        textView.setText(count+"초");
+        textView.setText(count+"");
     }
     private void addsec(){ // 타이머 30초 추가 처리 메소드
         count += 30;
-        textView.setText(count+"초");
+        textView.setText(count+"");
     }
     private void minusmin(){ // 타이머 60초 감소 처리 메소드
         count -= 60;
-        textView.setText(count+"초");
+        textView.setText(count+"");
     }
     private void minussec(){ // 타이머 30초 감소 처리 메소드
         count -= 30;
-        textView.setText(count+"초");
+        textView.setText(count+"");
     }
 
     private void startTimerTask() // 타이머가 시작했을 때 처리 메소드
@@ -126,7 +126,7 @@ public class timer2Activity extends AppCompatActivity {
                         public void run() {
                             mTimerRunning = false;
                             TimerStartBtn.setText("START"); // 타이머가 흘러갈 때 시작 버튼을 일시정지로 바꿉니다.
-                            TimerStartBtn.setBackgroundResource(R.drawable.button_background);
+                            TimerStartBtn.setBackgroundResource(R.drawable.button2_background);
                         }
                     });
                 }
@@ -134,7 +134,7 @@ public class timer2Activity extends AppCompatActivity {
                 textView.post(new Runnable() {
                     @Override
                     public void run() {
-                        textView.setText(count + " 초");
+                        textView.setText(count + "");
                     }
                 });
             }
@@ -149,7 +149,7 @@ public class timer2Activity extends AppCompatActivity {
             timerTask.cancel();
             mTimerRunning = false;
             TimerStartBtn.setText("START");
-            TimerStartBtn.setBackgroundResource(R.drawable.button_background);
+            TimerStartBtn.setBackgroundResource(R.drawable.button2_background);
         }
         textView.setText("");
         count=0;
@@ -160,6 +160,6 @@ public class timer2Activity extends AppCompatActivity {
         timerTask.cancel();
         mTimerRunning = false;
         TimerStartBtn.setText("START");
-        TimerStartBtn.setBackgroundResource(R.drawable.button_background);
+        TimerStartBtn.setBackgroundResource(R.drawable.button2_background);
     }
 }
