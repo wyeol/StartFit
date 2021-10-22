@@ -1,12 +1,13 @@
 package com.finaltest.startfit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.finaltest.startfit.calender.calenderfag;
@@ -14,16 +15,10 @@ import com.finaltest.startfit.fragment.HomeFragment;
 import com.finaltest.startfit.fragment.UserInfoFragment;
 import com.finaltest.startfit.login.RegisterActivity;
 import com.finaltest.startfit.video.videofag;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends BasicActivity {
+public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView; // 바텀 네비게이션 뷰
     private FragmentManager fm;
@@ -31,97 +26,83 @@ public class MainActivity extends BasicActivity {
 
     private com.finaltest.startfit.calender.calenderfag calenderfag;
     private com.finaltest.startfit.video.videofag videofag;
-    private boardfag boardfag;
+    private HomeFragment boardfag;
     private tradefag tradefag;
-    private static final String TAG = "MainActivity";
-
-
-    private FirebaseAuth mFirebaseAuth;
+    private UserInfoFragment mypagefag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            init();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null){
+            startSignUpActivity();
+        }
+
+
+        bottomNavigationView = findViewById(R.id.bottomNavi);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
+                switch (menuitem.getItemId()) {
+                    case R.id.action_calendar:
+                        setFrag(0);
+                        break;
+                    case R.id.action_video:
+                        setFrag(1);
+                        break;
+                    case R.id.home:
+                        setFrag(2);
+                        break;
+                    case R.id.action_trade:
+                        setFrag(3);
+                        break;
+                    case R.id.action_mypage:
+                        setFrag(4);
+                        break;
+
+                }
+                return true;
+            }
+        });
+        calenderfag = new calenderfag();
+        videofag = new videofag();
+        boardfag = new HomeFragment();
+        tradefag = new tradefag();
+        mypagefag = new UserInfoFragment();
+        setFrag(0); // 첫 프래그먼트 화면에 캘린더 화면을 띄움
+
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case 1:
-                init();
+    // 프래그먼트 교체가 일어나는 실행문
+    private void setFrag(int n) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n) {
+            case 0:
+                ft.replace(R.id.main_frame, calenderfag);
+                ft.commit();
                 break;
+            case 1:
+                ft.replace(R.id.main_frame, videofag);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.main_frame, boardfag);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.main_frame, tradefag);
+                ft.commit();
+                break;
+            case 4:
+                ft.replace(R.id.main_frame, mypagefag);
+                ft.commit();
+                break;
+
         }
+
     }
-
-    private void init(){
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser == null) {
-            myStartActivity(RegisterActivity.class);
-        } else {
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("users").document(firebaseUser.getUid());
-            documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document != null) {
-                            if (document.exists()) {
-                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                            } else {
-                                Log.d(TAG, "No such document");
-                                myStartActivity(MemberInitActivity.class);
-                            }
-                        }
-                    } else {
-                        Log.d(TAG, "get failed with ", task.getException());
-                    }
-                }
-            });
-
-            calenderfag calenderfag = new calenderfag();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, calenderfag)
-                    .commit();
-
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavi);
-            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.action_calendar:
-                            calenderfag calenderfag = new calenderfag();
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, calenderfag)
-                                    .commit();
-                            return true;
-                        case R.id.action_video:
-                            videofag videofag = new videofag();
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, videofag)
-                                    .commit();
-                            return true;
-                        case R.id.action_mypage:
-                            UserInfoFragment userInfoFragment = new UserInfoFragment();
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, userInfoFragment)
-                                    .commit();
-                            return true;
-                        case R.id.home:
-                            HomeFragment homeFragment = new HomeFragment();
-                            getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.container, homeFragment)
-                                    .commit();
-                            return true;
-                    }
-                    return false;
-                }
-            });
-        }
-    }
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -130,18 +111,10 @@ public class MainActivity extends BasicActivity {
         System.exit(1);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-    }
 
-    private void myStartActivity(Class c) {
-        Intent intent = new Intent(this, c);
-        startActivityForResult(intent, 1);
+    private void startSignUpActivity(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }
