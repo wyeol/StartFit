@@ -20,6 +20,12 @@ import com.finaltest.startfit.WritePostActivity;
 import com.finaltest.startfit.adapter.HomeAdapter;
 import com.finaltest.startfit.listener.OnPostListener;
 import com.finaltest.startfit.adapter.HomeAdapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +48,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<PostInfo> postList;
     private boolean updating;
     private boolean topScrolled;
+    private AdView mAdview; //애드뷰 변수 선언
     private FirebaseAuth mFirebaseAuth;
 
 
@@ -59,6 +66,22 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        //광고 관련 메소드
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdview = view.findViewById(R.id.adView); //배너광고 레이아웃 가져오기
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdview.loadAd(adRequest);
+        AdView adView = new AdView(getActivity());
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("\n" + "ca-app-pub-3940256099942544/6300978111");
+        //광고 관련 메소드 끝
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         postList = new ArrayList<>();

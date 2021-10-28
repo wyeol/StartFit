@@ -31,6 +31,12 @@ import com.finaltest.startfit.calender.decorators.SundayDecorator;
 import com.finaltest.startfit.calender.room.Memo;
 import com.finaltest.startfit.calender.room.MemoDao;
 import com.finaltest.startfit.calender.room.MemoDatabase;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
@@ -52,6 +58,7 @@ public class calenderfag extends Fragment {
     private MemoDatabase mDatabase;
     private MemoDao mDao;
     private View view;
+    private AdView mAdview; //애드뷰 변수 선언
 
     private int mISelectedItem = -1;
     private int mISelectedID = 0;
@@ -76,6 +83,20 @@ public class calenderfag extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.calender_fag, container, false);
 
+
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdview = view.findViewById(R.id.adView); //배너광고 레이아웃 가져오기
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdview.loadAd(adRequest);
+        AdView adView = new AdView(getActivity());
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("\n" + "ca-app-pub-3940256099942544/6300978111");
 
         timer_Btn = view.findViewById(R.id.timerbtn);
         exercise_Btn = view.findViewById(R.id.exericsebtn);

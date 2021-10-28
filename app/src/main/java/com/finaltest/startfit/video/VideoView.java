@@ -8,9 +8,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.finaltest.startfit.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
@@ -23,6 +30,8 @@ public class VideoView extends YouTubeBaseActivity {
     YouTubePlayer player;
     //유튜브 API KEY와 동영상 ID 변수 설정
     private static String API_KEY = "AIzaSyBFcvJcRToyKOlwNVPVBSfDfkXXnl7wR_0";
+
+    private AdView mAdview; //애드뷰 변수 선언
     //https://www.youtube.com/watch?v=hl-ii7W4ITg ▶ 유튜브 동영상 v= 다음 부분이 videoId
 
 
@@ -38,6 +47,22 @@ public class VideoView extends YouTubeBaseActivity {
 
         Intent intent = getIntent();
         String videoId = intent.getStringExtra("영상");
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdview = findViewById(R.id.adView); //배너광고 레이아웃 가져오기
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdview.loadAd(adRequest);
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("\n" + "ca-app-pub-3940256099942544/6300978111");
+
+
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override

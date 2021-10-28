@@ -9,30 +9,35 @@
 
     <TextView
         android:id="@+id/TimerTitle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/fontfont"
         android:gravity="center"
         android:text="운동 영상"
         android:textColor="#000000"
         android:textSize="50dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="204dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.22">
+        app:layout_constraintTop_toBottomOf="@+id/TimerTitle"
+        app:layout_constraintVertical_bias="0.05">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,9 +47,9 @@
             <ImageView
                 android:id="@+id/upper_body"
                 android:layout_width="183dp"
-                android:layout_height="107dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/upper_body" />
 
@@ -56,9 +61,9 @@
             <ImageView
                 android:id="@+id/lower_body"
                 android:layout_width="183dp"
-                android:layout_height="107dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/lower_body" />
 
@@ -66,19 +71,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/exercise1"
                 android:layout_width="183dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/fontfont"
                 android:text="상체 운동"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/fontfont"/>
+                android:textSize="20dp" />
 
             <View
                 android:layout_width="0dp"
@@ -89,7 +94,7 @@
                 android:id="@+id/exercise2"
                 android:layout_width="183dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/fontfont"
                 android:text="하체 운동"
@@ -104,6 +109,8 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="183dp"
+        android:gravity="center"
+        android:layout_marginTop="13dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,9 +127,9 @@
             <ImageView
                 android:id="@+id/full_body"
                 android:layout_width="183dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/full_body" />
 
@@ -134,9 +141,9 @@
             <ImageView
                 android:id="@+id/running"
                 android:layout_width="183dp"
-                android:layout_height="107dp"
+                android:layout_height="match_parent"
                 android:layout_gravity="right"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/running" />
         </LinearLayout>
@@ -150,12 +157,12 @@
                 android:id="@+id/exercise3"
                 android:layout_width="183dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/fontfont"
                 android:text="맨몸 운동"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/fontfont"/>
+                android:textSize="20dp" />
 
             <View
                 android:layout_width="0dp"
@@ -166,15 +173,33 @@
                 android:id="@+id/exercise4"
                 android:layout_width="183dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/fontfont"
                 android:text="유산소 운동"
                 android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:background="@drawable/button_background"
-                android:fontFamily="@font/fontfont"/>
+                android:textSize="20dp" />
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0"></com.google.android.gms.ads.AdView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

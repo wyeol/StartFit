@@ -1,5 +1,6 @@
 package com.finaltest.startfit.video.exercise_video;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,13 +13,36 @@ import android.widget.Toast;
 
 import com.finaltest.startfit.R;
 import com.finaltest.startfit.video.VideoView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class exercise_full_body extends AppCompatActivity {
+
+    private AdView mAdview; //애드뷰 변수 선언
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_full_body);
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(@NonNull InitializationStatus initializationStatus) {
+
+            }
+        });
+
+        mAdview = findViewById(R.id.adView); //배너광고 레이아웃 가져오기
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdview.loadAd(adRequest);
+        AdView adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("\n" + "ca-app-pub-3940256099942544/6300978111");
+
 
         ListView listView = findViewById(R.id.exercise_choice_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

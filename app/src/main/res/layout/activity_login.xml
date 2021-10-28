@@ -6,63 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="412dp"
-        android:layout_height="291dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289"
-        app:srcCompat="@drawable/crossfit" />
-
-    <Button
-        android:id="@+id/loginbutton"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/fontfont"
-        android:text="로그인"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.905" />
-
-    <Button
-        android:id="@+id/gotoPasswordResetButton"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/fontfont"
-        android:text="비밀번호 찾기"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.905" />
-
-    <Button
-        android:id="@+id/signupbutton"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/fontfont"
-        android:text="회원가입"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.905" />
-
     <TextView
         android:id="@+id/testview123"
         android:layout_width="wrap_content"
@@ -76,18 +19,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.048" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="291dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258"
+        app:srcCompat="@drawable/crossfit" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="299dp"
         android:layout_height="151dp"
+        android:layout_marginTop="3dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.753">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,16 +57,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="15dp"
-                android:text="Emill-ID"
-                android:fontFamily="@font/fontfont"/>
+                android:fontFamily="@font/fontfont"
+                android:text="Emill-ID" />
 
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="221dp"
                 android:layout_height="61dp"
                 android:ems="10"
-                android:hint="이메일을 입력하세요"
                 android:fontFamily="@font/fontfont"
+                android:hint="이메일을 입력하세요"
                 android:inputType="textEmailAddress"
                 android:text=""
 
@@ -121,26 +77,69 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="PASSWORD"
-                android:fontFamily="@font/fontfont"/>
+                android:fontFamily="@font/fontfont"
+                android:text="PASSWORD" />
 
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="221dp"
                 android:layout_height="61dp"
                 android:ems="10"
+                android:fontFamily="@font/fontfont"
                 android:hint="비밀번호를 입력하세요"
                 android:inputType="textPassword"
-                android:fontFamily="@font/fontfont"
                 android:text="" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <Button
+            android:id="@+id/loginbutton"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/fontfont"
+            android:text="로그인"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/gotoPasswordResetButton"
+            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/fontfont"
+            android:text="비밀번호 찾기"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/signupbutton"
+            android:layout_height="40dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/fontfont"
+            android:text="회원가입"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
