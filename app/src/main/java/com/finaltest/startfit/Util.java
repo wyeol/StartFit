@@ -36,4 +36,24 @@ public class Util {
         String mimeType = URLConnection.guessContentTypeFromName(path);
         return mimeType != null && mimeType.startsWith("video");
     }
+
+
+
+    public static boolean isStorageUrl2(String url){
+        return Patterns.WEB_URL.matcher(url).matches() && url.contains("https://firebasestorage.googleapis.com/v0/b/sns-project-3e2c2.appspot.com/o/post2");
+    }
+
+    public static String storageUrlToName2(String url){
+        return url.split("\\?")[0].split("%2F")[url.split("\\?")[0].split("%2F").length - 1];
+    }
+
+    public static boolean isImageFile2(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("image");
+    }
+
+    public static boolean isVideoFile2(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("video");
+    }
 }

@@ -49,7 +49,7 @@ public class MemberInitActivity extends BasicActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_init);
 
-        loaderLayout = findViewById(R.id.loaderLyaout);
+        loaderLayout = findViewById(R.id.loaderLayout);
         profileImageVIew = findViewById(R.id.profileImageView);
         buttonBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
 

@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.finaltest.startfit.view.ContentsItemView;
-import com.finaltest.startfit.view.ContentsItemView;
+import com.finaltest.startfit.view.ContentsItemView2;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,12 +39,16 @@ import static com.finaltest.startfit.Util.GALLERY_VIDEO;
 import static com.finaltest.startfit.Util.INTENT_MEDIA;
 import static com.finaltest.startfit.Util.INTENT_PATH;
 import static com.finaltest.startfit.Util.isImageFile;
+import static com.finaltest.startfit.Util.isImageFile2;
 import static com.finaltest.startfit.Util.isStorageUrl;
+import static com.finaltest.startfit.Util.isStorageUrl2;
 import static com.finaltest.startfit.Util.isVideoFile;
+import static com.finaltest.startfit.Util.isVideoFile2;
 import static com.finaltest.startfit.Util.showToast;
 import static com.finaltest.startfit.Util.storageUrlToName;
+import static com.finaltest.startfit.Util.storageUrlToName2;
 
-public class WritePostActivity extends BasicActivity {
+public class WritePostActivity2 extends BasicActivity {
     private static final String TAG = "WritePostActivity";
     private FirebaseUser user;
     private StorageReference storageRef;
@@ -56,27 +60,28 @@ public class WritePostActivity extends BasicActivity {
     private EditText selectedEditText;
     private EditText contentsEditText;
     private EditText titleEditText;
-    private PostInfo postInfo;
+    private EditText priceEditText;
+    private PostInfo2 postInfo2;
     private int pathCount, successCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_post);
+        setContentView(R.layout.activity_write_post2);
         setToolbarTitle("게시글 작성");
 
-        parent = findViewById(R.id.contentsLayout);
-        buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout);
+        parent = findViewById(R.id.contentsLayout2);
+        buttonsBackgroundLayout = findViewById(R.id.buttonsBackgroundLayout2);
         loaderLayout = findViewById(R.id.loaderLayout);
-        contentsEditText = findViewById(R.id.contentsEditText);
-        titleEditText = findViewById(R.id.titleEditText);
+        contentsEditText = findViewById(R.id.contentsEditText2);
+        titleEditText = findViewById(R.id.titleEditText2);
 
-        findViewById(R.id.check).setOnClickListener(onClickListener);
-        findViewById(R.id.image).setOnClickListener(onClickListener);
-        findViewById(R.id.video).setOnClickListener(onClickListener);
-        findViewById(R.id.imageModify).setOnClickListener(onClickListener);
-        findViewById(R.id.videoModify).setOnClickListener(onClickListener);
-        findViewById(R.id.delete).setOnClickListener(onClickListener);
+        findViewById(R.id.check2).setOnClickListener(onClickListener);
+        findViewById(R.id.image2).setOnClickListener(onClickListener);
+        findViewById(R.id.video2).setOnClickListener(onClickListener);
+        findViewById(R.id.imageModify2).setOnClickListener(onClickListener);
+        findViewById(R.id.videoModify2).setOnClickListener(onClickListener);
+        findViewById(R.id.delete2).setOnClickListener(onClickListener);
 
         buttonsBackgroundLayout.setOnClickListener(onClickListener);
         contentsEditText.setOnFocusChangeListener(onFocusChangeListener);
@@ -92,7 +97,7 @@ public class WritePostActivity extends BasicActivity {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
-        postInfo = (PostInfo) getIntent().getSerializableExtra("postInfo");
+        postInfo2 = (PostInfo2) getIntent().getSerializableExtra("postInfo2");
         postInit();
     }
 
@@ -144,37 +149,37 @@ public class WritePostActivity extends BasicActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.check:
+                case R.id.check2:
                     storageUpload();
                     break;
-                case R.id.image:
+                case R.id.image2:
                     myStartActivity(GalleryActivity.class, GALLERY_IMAGE, 0);
                     break;
-                case R.id.video:
+                case R.id.video2:
                     myStartActivity(GalleryActivity.class, GALLERY_VIDEO, 0);
                     break;
-                case R.id.buttonsBackgroundLayout:
+                case R.id.buttonsBackgroundLayout2:
                     if (buttonsBackgroundLayout.getVisibility() == View.VISIBLE) {
                         buttonsBackgroundLayout.setVisibility(View.GONE);
                     }
                     break;
-                case R.id.imageModify:
+                case R.id.imageModify2:
                     myStartActivity(GalleryActivity.class, GALLERY_IMAGE, 1);
                     buttonsBackgroundLayout.setVisibility(View.GONE);
                     break;
-                case R.id.videoModify:
+                case R.id.videoModify2:
                     myStartActivity(GalleryActivity.class, GALLERY_VIDEO, 1);
                     buttonsBackgroundLayout.setVisibility(View.GONE);
                     break;
-                case R.id.delete:
+                case R.id.delete2:
                     final View selectedView = (View) selectedImageVIew.getParent();
                     String path = pathList.get(parent.indexOfChild(selectedView) - 1);
-                    if(isStorageUrl(path)){
-                        StorageReference desertRef = storageRef.child("posts/" + postInfo.getId() + "/" + storageUrlToName(path));
+                    if(isStorageUrl2(path)){
+                        StorageReference desertRef = storageRef.child("posts2/" + postInfo2.getId() + "/" + storageUrlToName2(path));
                         desertRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                showToast(com.finaltest.startfit.WritePostActivity.this, "파일을 삭제하였습니다.");
+                                showToast(WritePostActivity2.this, "파일을 삭제하였습니다.");
                                 pathList.remove(parent.indexOfChild(selectedView) - 1);
                                 parent.removeView(selectedView);
                                 buttonsBackgroundLayout.setVisibility(View.GONE);
@@ -182,7 +187,7 @@ public class WritePostActivity extends BasicActivity {
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception exception) {
-                                showToast(com.finaltest.startfit.WritePostActivity.this, "파일을 삭제하는데 실패하였습니다.");
+                                showToast(WritePostActivity2.this, "파일을 삭제하는데 실패하였습니다.");
                             }
                         });
                     }else{
@@ -205,7 +210,8 @@ public class WritePostActivity extends BasicActivity {
     };
 
     private void storageUpload() {
-        final String title = ((EditText) findViewById(R.id.titleEditText)).getText().toString();
+        final String title = ((EditText) findViewById(R.id.titleEditText2)).getText().toString();
+
         if (title.length() > 0) {
             loaderLayout.setVisibility(View.VISIBLE);
             final ArrayList<String> contentsList = new ArrayList<>();
@@ -214,8 +220,8 @@ public class WritePostActivity extends BasicActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
             FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-            final DocumentReference documentReference = postInfo == null ? firebaseFirestore.collection("posts").document() : firebaseFirestore.collection("posts").document(postInfo.getId());
-            final Date date = postInfo == null ? new Date() : postInfo.getCreatedAt();
+            final DocumentReference documentReference = postInfo2 == null ? firebaseFirestore.collection("posts2").document() : firebaseFirestore.collection("posts").document(postInfo2.getId());
+            final Date date = postInfo2 == null ? new Date() : postInfo2.getCreatedAt();
             for (int i = 0; i < parent.getChildCount(); i++) {
                 LinearLayout linearLayout = (LinearLayout) parent.getChildAt(i);
                 for (int ii = 0; ii < linearLayout.getChildCount(); ii++) {
@@ -226,19 +232,19 @@ public class WritePostActivity extends BasicActivity {
                             contentsList.add(text);
                             formatList.add("text");
                         }
-                    } else if (!isStorageUrl(pathList.get(pathCount))) {
+                    } else if (!isStorageUrl2(pathList.get(pathCount))) {
                         String path = pathList.get(pathCount);
                         successCount++;
                         contentsList.add(path);
-                        if(isImageFile(path)){
+                        if(isImageFile2(path)){
                             formatList.add("image");
-                        }else if (isVideoFile(path)){
+                        }else if (isVideoFile2(path)){
                             formatList.add("video");
                         }else{
                             formatList.add("text");
                         }
                         String[] pathArray = path.split("\\.");
-                        final StorageReference mountainImagesRef = storageRef.child("posts/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
+                        final StorageReference mountainImagesRef = storageRef.child("posts2/" + documentReference.getId() + "/" + pathCount + "." + pathArray[pathArray.length - 1]);
                         try {
                             InputStream stream = new FileInputStream(new File(pathList.get(pathCount)));
                             StorageMetadata metadata = new StorageMetadata.Builder().setCustomMetadata("index", "" + (contentsList.size() - 1)).build();
@@ -257,7 +263,7 @@ public class WritePostActivity extends BasicActivity {
                                             successCount--;
                                             contentsList.set(index, uri.toString());
                                             if (successCount == 0) {
-                                                PostInfo postInfo = new PostInfo(title, contentsList, formatList, user.getUid(), date);
+                                                PostInfo2 postInfo = new PostInfo2(title, contentsList, formatList, user.getUid(), date);
                                                 storeUpload(documentReference, postInfo);
                                             }
                                         }
@@ -272,22 +278,22 @@ public class WritePostActivity extends BasicActivity {
                 }
             }
             if (successCount == 0) {
-                storeUpload(documentReference, new PostInfo(title, contentsList, formatList, user.getUid(), date));
+                storeUpload(documentReference, new PostInfo2(title, contentsList, formatList, user.getUid(), date));
             }
         } else {
-            showToast(com.finaltest.startfit.WritePostActivity.this, "제목을 입력해주세요.");
+            showToast(WritePostActivity2.this, "제목을 입력해주세요.");
         }
     }
 
-    private void storeUpload(DocumentReference documentReference, final PostInfo postInfo) {
-        documentReference.set(postInfo.getPostInfo())
+    private void storeUpload(DocumentReference documentReference, final PostInfo2 postInfo2) {
+        documentReference.set(postInfo2.getPostInfo2())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
                         loaderLayout.setVisibility(View.GONE);
                         Intent resultIntent = new Intent();
-                        resultIntent.putExtra("postinfo", postInfo);
+                        resultIntent.putExtra("postinfo2", postInfo2);
                         setResult(Activity.RESULT_OK, resultIntent);
                         finish();
                     }
@@ -302,14 +308,14 @@ public class WritePostActivity extends BasicActivity {
     }
 
     private void postInit() {
-        if (postInfo != null) {
-            titleEditText.setText(postInfo.getTitle());
-            ArrayList<String> contentsList = postInfo.getContents();
+        if (postInfo2 != null) {
+            titleEditText.setText(postInfo2.getTitle());
+            ArrayList<String> contentsList = postInfo2.getContents();
             for (int i = 0; i < contentsList.size(); i++) {
                 String contents = contentsList.get(i);
-                if (isStorageUrl(contents)) {
+                if (isStorageUrl2(contents)) {
                     pathList.add(contents);
-                    ContentsItemView contentsItemView = new ContentsItemView(this);
+                    ContentsItemView2 contentsItemView = new ContentsItemView2(this);
                     parent.addView(contentsItemView);
 
                     contentsItemView.setImage(contents);
@@ -324,7 +330,7 @@ public class WritePostActivity extends BasicActivity {
                     contentsItemView.setOnFocusChangeListener(onFocusChangeListener);
                     if (i < contentsList.size() - 1) {
                         String nextContents = contentsList.get(i + 1);
-                        if (!isStorageUrl(nextContents)) {
+                        if (!isStorageUrl2(nextContents)) {
                             contentsItemView.setText(nextContents);
                         }
                     }

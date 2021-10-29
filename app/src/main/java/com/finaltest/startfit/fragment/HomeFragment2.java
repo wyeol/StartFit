@@ -7,26 +7,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.finaltest.startfit.MemberInitActivity;
-import com.finaltest.startfit.PostInfo;
+import com.finaltest.startfit.PostInfo2;
 import com.finaltest.startfit.R;
-import com.finaltest.startfit.WritePostActivity;
-import com.finaltest.startfit.adapter.HomeAdapter;
-import com.finaltest.startfit.listener.OnPostListener;
-import com.finaltest.startfit.adapter.HomeAdapter;
+import com.finaltest.startfit.WritePostActivity2;
+import com.finaltest.startfit.adapter.HomeAdapter2;
+import com.finaltest.startfit.listener.OnPostListener2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -35,20 +29,18 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class HomeFragment extends Fragment {
-    private static final String TAG = "HomeFragment";
+public class HomeFragment2 extends Fragment {
+    private static final String TAG = "HomeFragment2";
     private FirebaseFirestore firebaseFirestore;
-    private HomeAdapter homeAdapter;
-    private ArrayList<PostInfo> postList;
+    private HomeAdapter2 homeAdapter;
+    private ArrayList<PostInfo2> postList2;
     private boolean updating;
     private boolean topScrolled;
     private FirebaseAuth mFirebaseAuth;
 
-
-    public HomeFragment() {
+    public HomeFragment2() {
         // Required empty public constructor
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,15 +50,15 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home2, container, false);
 
         firebaseFirestore = FirebaseFirestore.getInstance();
-        postList = new ArrayList<>();
-        homeAdapter = new HomeAdapter(getActivity(), postList);
-        homeAdapter.setOnPostListener(onPostListener);
+        postList2 = new ArrayList<>();
+        homeAdapter = new HomeAdapter2(getActivity(), postList2);
+        homeAdapter.setOnPostListener2(onPostListener2);
 
-        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        view.findViewById(R.id.floatingActionButton).setOnClickListener(onClickListener);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerView2);
+        view.findViewById(R.id.floatingActionButton2).setOnClickListener(onClickListener);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -135,40 +127,34 @@ public class HomeFragment extends Fragment {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.floatingActionButton:
-                    myStartActivity(WritePostActivity.class);
+                case R.id.floatingActionButton2:
+                    myStartActivity(WritePostActivity2.class);
                     break;
             }
         }
     };
 
-    OnPostListener onPostListener = new OnPostListener() {
+    OnPostListener2 onPostListener2 = new OnPostListener2() {
 
 
+
+//        @Override
+//        public void onDelete(PostInfo postInfo) {
+//            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+////
+//            postList2.remove(postInfo);
+//            homeAdapter.notifyDataSetChanged();
+//
+//            Log.e("로그: ","삭제 성공");
+//        }
 
         @Override
-        public void onDelete(PostInfo postInfo) {
+        public void onDelete(PostInfo2 postInfo2) {
             FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-//            DocumentReference docRef = db.collection("cities").document("SF");
-//            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                    if (task.isSuccessful()) {
-//                        DocumentSnapshot document = task.getResult();
-//                        if (document.exists()) {
-//                            Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                        } else {
-//                            Log.d(TAG, "No such document");
-//                        }
-//                    } else {
-//                        Log.d(TAG, "get failed with ", task.getException());
-//                    }
-//                }
-//            });
-
-//            if()
-            postList.remove(postInfo);
+//
+            postList2.remove(postInfo2);
             homeAdapter.notifyDataSetChanged();
 
             Log.e("로그: ","삭제 성공");
@@ -182,25 +168,26 @@ public class HomeFragment extends Fragment {
 
     private void postsUpdate(final boolean clear) {
         updating = true;
-        Date date = postList.size() == 0 || clear ? new Date() : postList.get(postList.size() - 1).getCreatedAt();
-        CollectionReference collectionReference = firebaseFirestore.collection("posts");
+        Date date = postList2.size() == 0 || clear ? new Date() : postList2.get(postList2.size() - 1).getCreatedAt();
+        CollectionReference collectionReference = firebaseFirestore.collection("posts2");
         collectionReference.orderBy("createdAt", Query.Direction.DESCENDING).whereLessThan("createdAt", date).limit(10).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             if(clear){
-                                postList.clear();
+                                postList2.clear();
                             }
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
-                                postList.add(new PostInfo(
+                                postList2.add(new PostInfo2(
                                         document.getData().get("title").toString(),
                                         (ArrayList<String>) document.getData().get("contents"),
                                         (ArrayList<String>) document.getData().get("formats"),
                                         document.getData().get("publisher").toString(),
                                         new Date(document.getDate("createdAt").getTime()),
-                                        document.getId()));
+                                        document.getId()
+                                       ));
                             }
                             homeAdapter.notifyDataSetChanged();
                         } else {
@@ -214,6 +201,7 @@ public class HomeFragment extends Fragment {
 
     private void myStartActivity(Class c) {
         Intent intent = new Intent(getActivity(), c);
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, 1);
     }
 }
+

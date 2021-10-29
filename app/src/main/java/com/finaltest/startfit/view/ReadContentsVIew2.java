@@ -1,0 +1,119 @@
+package com.finaltest.startfit.view;
+
+import android.content.Context;
+import android.net.Uri;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
+import com.bumptech.glide.Glide;
+import com.finaltest.startfit.PostInfo2;
+import com.finaltest.startfit.R;
+import com.google.android.exoplayer2.ExoPlayerFactory;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
+import com.google.android.exoplayer2.ui.PlayerView;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.util.Util;
+import com.google.android.exoplayer2.video.VideoListener;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Locale;
+
+public class ReadContentsVIew2 extends LinearLayout {
+    private Context context;
+    private LayoutInflater layoutInflater;
+    private ArrayList<SimpleExoPlayer> playerArrayList = new ArrayList<>();
+    private int moreIndex = -1;
+
+    public ReadContentsVIew2(Context context) {
+        super(context);
+        this.context = context;
+        initView();
+    }
+
+    public ReadContentsVIew2(Context context, @Nullable AttributeSet attributeSet) {
+        super(context, attributeSet);
+        this.context = context;
+        initView();
+    }
+
+    private void initView(){
+        setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        setOrientation(LinearLayout.VERTICAL);
+        layoutInflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater.inflate(R.layout.view_post2, this, true);
+    }
+
+    public void setMoreIndex(int moreIndex){
+        this.moreIndex = moreIndex;
+    }
+
+    public void setPostInfo(PostInfo2 postInfo2){
+        TextView createdAtTextView = findViewById(R.id.createAtTextView2);
+        createdAtTextView.setText(new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(postInfo2.getCreatedAt()));
+
+        LinearLayout contentsLayout = findViewById(R.id.contentsLayout2);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        ArrayList<String> contentsList = postInfo2.getContents();
+        ArrayList<String> formatList = postInfo2.getFormats();
+
+        for (int i = 0; i < contentsList.size(); i++) {
+            if (i == moreIndex) {
+                TextView textView = new TextView(context);
+                textView.setLayoutParams(layoutParams);
+                textView.setText("더보기...");
+                contentsLayout.addView(textView);
+                break;
+            }
+
+            String contents = contentsList.get(i);
+            String formats = formatList.get(i);
+
+            if(formats.equals("image")){
+                ImageView imageView = (ImageView)layoutInflater.inflate(R.layout.view_contents_image2, this, false);
+                contentsLayout.addView(imageView);
+                Glide.with(this).load(contents).override(1000).thumbnail(0.1f).into(imageView);
+            }else if(formats.equals("video")){
+                final PlayerView playerView = (PlayerView) layoutInflater.inflate(R.layout.view_contents_player2, this, false);
+
+                DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(context,
+                        Util.getUserAgent(context, getResources().getString(R.string.app_name)));
+                MediaSource videoSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(Uri.parse(contents));
+
+                SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(context);
+
+                player.prepare(videoSource);
+
+                player.addVideoListener(new VideoListener() {
+                    @Override
+                    public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees, float pixelWidthHeightRatio) {
+                        playerView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
+                    }
+                });
+
+                playerArrayList.add(player);
+
+                playerView.setPlayer(player);
+                contentsLayout.addView(playerView);
+            }else{
+                TextView textView = (TextView) layoutInflater.inflate(R.layout.view_contents_text2, this, false);
+                textView.setText(contents);
+                contentsLayout.addView(textView);
+            }
+        }
+    }
+
+    public ArrayList<SimpleExoPlayer> getPlayerArrayList() {
+        return playerArrayList;
+    }
+}

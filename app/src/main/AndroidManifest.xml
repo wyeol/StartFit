@@ -3,6 +3,7 @@
     package="com.finaltest.startfit">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name = "android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -45,12 +46,16 @@
         <activity android:name=".video.exercise_video.exercise_running" />
         <activity android:name=".MemberInitActivity" />
         <activity android:name=".GalleryActivity" />
+        <activity android:name=".GalleryActivity2" />
+
         <activity android:name=".WritePostActivity"/>
         <activity android:name=".PostActivity"/>
         <activity android:name=".camera.CameraActivity" >
 
         </activity>
 
+        <activity android:name=".WritePostActivity2"/>
+        <activity android:name=".PostActivity2"/>
     </application>
 
 </manifest>
