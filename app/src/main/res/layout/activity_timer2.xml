@@ -15,7 +15,7 @@
         android:gravity="center"
         android:text="Workout Timer"
         android:textColor="#000000"
-        android:textSize="28dp"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -38,7 +38,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="397dp"
+            android:layout_height="300dp"
             android:gravity="center"
             android:text=" "
             android:textAlignment="center"
@@ -86,18 +86,7 @@
                 android:text="1분 추가"
                 android:textSize="18dp" />
 
-            <Button
-                android:id="@+id/minus60"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_margin="6dp"
-                android:layout_weight="1"
-                android:background="@drawable/button4_background"
-                android:fontFamily="@font/fontfont"
-                android:onClick="clickHandler"
-                android:text="1분 빼기"
-                android:textSize="18dp" />
+
 
             <Button
                 android:id="@+id/plus30"
@@ -110,7 +99,6 @@
                 android:fontFamily="@font/fontfont"
                 android:onClick="clickHandler"
                 android:text="30초 추가"
-
                 android:textSize="18dp" />
 
             <Button
@@ -126,25 +114,38 @@
                 android:text="30초 빼기"
                 android:textSize="18dp" />
 
+            <Button
+                android:id="@+id/minus60"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/button4_background"
+                android:fontFamily="@font/fontfont"
+                android:onClick="clickHandler"
+                android:text="1분 빼기"
+                android:textSize="18dp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btnStart"
                 android:layout_width="350dp"
                 android:layout_height="65dp"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:layout_margin="45dp"
                 android:background="@drawable/button2_background"
                 android:fontFamily="@font/fontfont"
                 android:onClick="clickHandler"
                 android:text="Start"
                 android:textColor="#ffffff"
-                android:textSize="28dp"
+                android:textSize="30dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
